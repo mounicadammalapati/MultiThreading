@@ -19,8 +19,7 @@ namespace DatabaseMultiThreadedApplication
         public void InsertData()
         {
             var db=new librarydbContext();
-
-            var personDetails = db.PersonDetails.Take(20000).ToList();
+            var personDetails = db.PersonDetails.Skip(20000).Take(20000).ToList();
 
             Parallel.ForEach(personDetails, (x) =>
             {
